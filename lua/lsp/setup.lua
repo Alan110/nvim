@@ -17,8 +17,11 @@ mason.setup {
 
 mason_lsp.setup {
   -- A list of servers to automatically install if they're not already installed
-  ensure_installed = { "bashls", "cssls", "eslint", "graphql", "html", "jsonls", "sumneko_lua", "tailwindcss", "tsserver",
-    "vuels", "volar", "prismals" },
+  ensure_installed = { "bashls", "cssls", "eslint", "graphql", "html", "jsonls" , "tailwindcss", "tsserver",
+    -- "sumneko_lua",
+    "vuels", 
+    "volar",
+    "prismals" },
 
   -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed.
   -- This setting has no relation with the `ensure_installed` setting.
@@ -41,6 +44,9 @@ local handlers = {
 
 local function on_attach(client, bufnr)
   -- set up buffer keymaps, etc.
+  -- local opts = { noremap = true, silent = true }
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lk', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  -- vim.keymap.set("n", "<leader>K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -83,12 +89,12 @@ lspconfig.cssls.setup {
   settings = require('lsp.servers.cssls').settings,
 }
 
-lspconfig.eslint.setup {
-  capabilities = capabilities,
-  handlers = handlers,
-  on_attach = require('lsp.servers.eslint').on_attach,
-  settings = require('lsp.servers.eslint').settings,
-}
+-- lspconfig.eslint.setup {
+--   capabilities = capabilities,
+--   handlers = handlers,
+--   on_attach = require('lsp.servers.eslint').on_attach,
+--   settings = require('lsp.servers.eslint').settings,
+-- }
 
 lspconfig.jsonls.setup {
   capabilities = capabilities,
@@ -97,12 +103,12 @@ lspconfig.jsonls.setup {
   settings = require('lsp.servers.jsonls').settings,
 }
 
-lspconfig.sumneko_lua.setup {
-  capabilities = capabilities,
-  handlers = handlers,
-  on_attach = on_attach,
-  settings = require('lsp.servers.sumneko_lua').settings,
-}
+-- lspconfig.sumneko_lua.setup {
+--   capabilities = capabilities,
+--   handlers = handlers,
+--   on_attach = on_attach,
+--   settings = require('lsp.servers.sumneko_lua').settings,
+-- }
 
 lspconfig.vuels.setup {
   filetypes = require('lsp.servers.vuels').filetypes,

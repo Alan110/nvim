@@ -25,8 +25,9 @@ require('zen-mode').setup {
       ruler = false, -- disables the ruler text in the cmd line area
       showcmd = false, -- disables the command in the last line of the screen
     },
-    twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
-    gitsigns = { enabled = true }, -- disables git signs
+    -- 关闭移动时候会同步高亮当前代码
+    twilight = { enabled = false }, -- enable to start Twilight when zen mode opens
+    gitsigns = { enabled = false }, -- disables git signs
     tmux = { enabled = false }, -- disables the tmux statusline
     -- this will change the font size on kitty when in zen mode
     -- to make this work, you need to set the following kitty options:
@@ -40,18 +41,18 @@ require('zen-mode').setup {
 
   -- callback where you can add custom code when the Zen window opens
   on_open = function()
-    require('gitsigns.actions').toggle_current_line_blame()
+    -- require('gitsigns.actions').toggle_current_line_blame()
     require("indent_blankline.commands").disable()
-    vim.opt.relativenumber = false
+    -- vim.opt.relativenumber = false
     require('hlargs').disable()
     require('gitsigns.actions').refresh()
   end,
 
   -- callback where you can add custom code when the Zen window closes
   on_close = function()
-    require('gitsigns.actions').toggle_current_line_blame()
+    -- require('gitsigns.actions').toggle_current_line_blame()
     require("indent_blankline.commands").enable()
-    vim.opt.relativenumber = true
+    -- vim.opt.relativenumber = true
     require('hlargs').enable()
     require('gitsigns.actions').refresh()
   end,

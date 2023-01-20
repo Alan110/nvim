@@ -40,8 +40,8 @@ require("toggleterm").setup {
     -- the 'curved' border is a custom border type
     -- not natively supported but implemented in this plugin.
     border = 'curved', -- single/double/shadow/curved
-    width = math.floor(0.7 * vim.fn.winwidth(0)),
-    height = math.floor(0.8 * vim.fn.winheight(0)),
+    width = math.floor(0.8 * vim.fn.winwidth(0)),
+    height = math.floor(0.9 * vim.fn.winheight(0)),
     winblend = 4,
   },
   winbar = {
